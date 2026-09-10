@@ -6,23 +6,31 @@ public et le code est publié sous licence MIT (voir [LICENSE](LICENSE)).
 
 ## Pile technique
 
-- [Symfony](https://symfony.com/) (PHP) + [Twig](https://twig.symfony.com/)
-- Doctrine ORM, base PostgreSQL
-- Docker / docker compose pour le développement et la recette
+Pile imposée par l'annexe technique NVS-2026-014 ; versions retenues et justifiées dans
+[docs/dossier-architecture.md](docs/dossier-architecture.md).
+
+- PHP 8.4 + [Symfony](https://symfony.com/) 7.4 (LTS) + [Twig](https://twig.symfony.com/)
+- [FrankenPHP](https://frankenphp.dev/) comme serveur d'application
+- MySQL 8.4 (LTS) via Doctrine ORM
+- Docker Compose, à l'identique en développement et en recette
 
 ## État du projet
 
 Phase de cadrage : périmètre confirmé, modèle de données validé (voir
-[docs/modele-de-donnees.md](docs/modele-de-donnees.md)), mise en place du dépôt en cours.
+[docs/modele-de-donnees.md](docs/modele-de-donnees.md) et
+[docs/dossier-architecture.md](docs/dossier-architecture.md)), mise en place du dépôt en cours.
 
 ## Démarrage
 
 ```bash
-composer install
-docker compose up -d
+cp .env.example .env.local   # puis renseigner de vraies valeurs dans .env.local
+docker compose up -d --build
 php bin/console doctrine:migrations:migrate
-symfony server:start
 ```
+
+L'application est servie en HTTPS par FrankenPHP/Caddy. Pour le développement au jour le jour
+sans conteneuriser le PHP à chaque changement, la base peut aussi tourner seule via
+`docker compose up -d database` pendant que `symfony server:start` sert l'application en local.
 
 ## Contribution
 

@@ -2,17 +2,17 @@
 
 namespace App\Repository;
 
-use App\Entity\JournalAccesDossier;
+use App\Entity\AccesDossier;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<JournalAccesDossier>
+ * @extends ServiceEntityRepository<AccesDossier>
  */
-class JournalAccesDossierRepository extends ServiceEntityRepository
+class AccesDossierRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, JournalAccesDossier::class);
+        parent::__construct($registry, AccesDossier::class);
     }
 }

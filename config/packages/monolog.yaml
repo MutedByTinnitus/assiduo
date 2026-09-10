@@ -1,6 +1,13 @@
 monolog:
     channels: # To see all channels, run bin/console debug:autowiring logger
         - deprecation # Deprecations are logged in the dedicated "deprecation" channel when it exists
+        - acces_dossier # F5 — journal des accès aux dossiers élèves (annexe technique §8)
+    handlers:
+        acces_dossier:
+            type: stream
+            path: "%kernel.logs_dir%/acces_dossier.log"
+            level: info
+            channels: [acces_dossier]
 
 when@dev:
     monolog:

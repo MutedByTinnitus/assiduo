@@ -19,6 +19,9 @@
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
+# Annexe technique §2.7 — jeu de données/fichiers déposés par les utilisateurs
+/public/uploads/
+
 # Éditeurs / OS
 /.idea/
 /.vscode/

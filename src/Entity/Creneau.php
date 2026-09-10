@@ -16,6 +16,9 @@ class Creneau
     #[ORM\Column(length: 100)]
     private ?string $matiere = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $salle = null;
+
     /**
      * 1 = lundi ... 7 = dimanche
      */
@@ -49,6 +52,18 @@ class Creneau
     public function setMatiere(string $matiere): static
     {
         $this->matiere = $matiere;
+
+        return $this;
+    }
+
+    public function getSalle(): ?string
+    {
+        return $this->salle;
+    }
+
+    public function setSalle(string $salle): static
+    {
+        $this->salle = $salle;
 
         return $this;
     }

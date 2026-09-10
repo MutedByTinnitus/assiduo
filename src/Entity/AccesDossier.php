@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\JournalAccesDossierRepository;
+use App\Repository\AccesDossierRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: JournalAccesDossierRepository::class)]
-class JournalAccesDossier
+#[ORM\Entity(repositoryClass: AccesDossierRepository::class)]
+class AccesDossier
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

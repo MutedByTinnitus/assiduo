@@ -12,10 +12,7 @@ class Presence
     public const STATUT_PRESENT = 'present';
     public const STATUT_ABSENT = 'absent';
     public const STATUT_RETARD = 'retard';
-
-    public const QUALIFICATION_NON_TRAITE = 'non_traite';
-    public const QUALIFICATION_JUSTIFIEE = 'justifiee';
-    public const QUALIFICATION_INJUSTIFIEE = 'injustifiee';
+    public const STATUT_EXCLU = 'exclu';
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -28,14 +25,21 @@ class Presence
     #[ORM\Column(nullable: true)]
     private ?int $dureeRetardMinutes = null;
 
-    #[ORM\Column(length: 20)]
-    private string $qualification = self::QUALIFICATION_NON_TRAITE;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $motif = null;
 
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $justificatifTexte = null;
+
+    /**
+     * Qualification de l'absence : true = justifiée, false = injustifiée,
+     * null = non traitée. Pas de colonne "qualification" séparée qui pourrait
+     * se désynchroniser : l'état "non traité" est celui d'une absence dont
+     * motif/justificatif/traitePar/dateTraitement sont encore vides
+     * (voir annexe technique §3.2).
+     */
+    #[ORM\Column(nullable: true)]
+    private ?bool $justifiee = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $dateTraitement = null;
@@ -80,18 +84,6 @@ class Presence
         return $this;
     }
 
-    public function getQualification(): string
-    {
-        return $this->qualification;
-    }
-
-    public function setQualification(string $qualification): static
-    {
-        $this->qualification = $qualification;
-
-        return $this;
-    }
-
     public function getMotif(): ?string
     {
         return $this->motif;
@@ -112,6 +104,18 @@ class Presence
     public function setJustificatifTexte(?string $justificatifTexte): static
     {
         $this->justificatifTexte = $justificatifTexte;
+
+        return $this;
+    }
+
+    public function isJustifiee(): ?bool
+    {
+        return $this->justifiee;
+    }
+
+    public function setJustifiee(?bool $justifiee): static
+    {
+        $this->justifiee = $justifiee;
 
         return $this;
     }
