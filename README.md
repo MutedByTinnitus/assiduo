@@ -22,7 +22,7 @@ php bin/console doctrine:migrations:migrate
 
 ## Contribution
 
-- Branche `main` réservée à ce qui fonctionne — aucun développement direct dessus.
+- Branche `main` réservée à ce qui fonctionne, aucun développement direct dessus.
 - Une branche par tâche : `feature/<nom-issue>` ou `fix/<nom-issue>`, fusionnée sur `main`
   une fois la fonctionnalité opérationnelle.
 - Toute reprise de code externe est citée dans le message de commit et ci-dessous.
