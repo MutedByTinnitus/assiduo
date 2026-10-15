@@ -22,6 +22,10 @@
 # Annexe technique §2.7 : jeu de données/fichiers déposés par les utilisateurs
 /public/uploads/
 
+# Surcharges locales de Docker Compose (annexe technique §2.7)
+/compose.override.yaml
+/docker-compose.override.yml
+
 # Éditeurs / OS
 /.idea/
 /.vscode/

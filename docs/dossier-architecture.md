@@ -12,9 +12,9 @@ debian.org/releases (le 2026-09-10) et endoflife.date/mariadb (le 2026-10-15).
 
 | Composant | Version retenue | Justification |
 |---|---|---|
-| PHP | **8.4.25** | Support actif jusqu'à fin 2026 et sécurité jusqu'à fin 2028 : couvre les 12 points d'équipe avec marge, contrairement à PHP 8.2 et 8.3 dont le support actif est déjà terminé. Compatible avec Symfony 7.4 (exige PHP 8.2 minimum). |
+| PHP | **8.4.26** | Support actif jusqu'à fin 2026 et sécurité jusqu'à fin 2028 : couvre les 12 points d'équipe avec marge, contrairement à PHP 8.2 et 8.3 dont le support actif est déjà terminé. Compatible avec Symfony 7.4 (exige PHP 8.2 minimum). |
 | Symfony | **7.4 (LTS)** | Branche LTS maintenue en correctifs de sécurité jusqu'en 2029, alors que la branche courante (8.1) termine son support en janvier 2027, en plein milieu du projet. |
-| FrankenPHP | **1.12.7** (image `1.12.7-php8.4-trixie`) | Dernière version stable, disponible en image officielle épinglable ; variante Debian (Trixie) retenue plutôt qu'Alpine, qui impose de recompiler plusieurs extensions PHP (annexe §2.3). |
+| FrankenPHP | **1.12.7** (image `1.12.7-php8.4.26-trixie`, qui embarque PHP 8.4.26) | Dernière version stable, disponible en image officielle épinglable ; variante Debian (Trixie) retenue plutôt qu'Alpine, qui impose de recompiler plusieurs extensions PHP (annexe §2.3). |
 | MariaDB | **11.4 LTS** (image `mariadb:11.4.13`) | Support communautaire jusqu'en mai 2029, soit plus longtemps que les LTS 11.8 (juin 2028) et 10.11 (février 2028), donc très au-delà du projet. Sortie en mai 2024, elle a du recul en production (contrairement à la 12.3, sortie en mai 2026) et existe en image officielle épinglable. Compatible avec le pilote `pdo_mysql` et avec Doctrine (`serverVersion=mariadb-11.4.13`). |
 | Debian (machine de recette) | **13 « Trixie »** | Version stable actuelle depuis août 2025, support complet jusqu'en 2028 (LTS jusqu'en 2030) ; cohérente avec la variante Debian retenue pour l'image FrankenPHP. |
 

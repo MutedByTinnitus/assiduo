@@ -1,8 +1,10 @@
-FROM dunglas/frankenphp:1.12.7-php8.4-trixie
+FROM dunglas/frankenphp:1.12.7-php8.4.26-trixie
 
 RUN install-php-extensions pdo_mysql intl zip opcache
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+ENV APP_ENV=prod
 
 WORKDIR /app
 COPY . /app
