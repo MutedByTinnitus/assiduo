@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CreneauRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CreneauRepository::class)]
@@ -25,10 +26,10 @@ class Creneau
     #[ORM\Column]
     private ?int $jourSemaine = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::TIME_IMMUTABLE)]
     private ?\DateTimeImmutable $heureDebut = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::TIME_IMMUTABLE)]
     private ?\DateTimeImmutable $heureFin = null;
 
     #[ORM\ManyToOne]

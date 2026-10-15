@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EleveRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EleveRepository::class)]
@@ -27,7 +28,7 @@ class Eleve
     #[ORM\Column(length: 100)]
     private ?string $prenom = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $dateNaissance = null;
 
     #[ORM\ManyToOne(inversedBy: 'eleves')]
