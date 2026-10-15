@@ -8,22 +8,23 @@ services:
       SERVER_NAME: ":80"
       APP_ENV: ${APP_ENV:-prod}
       APP_SECRET: ${APP_SECRET}
-      DATABASE_URL: "mysql://app:${DB_PASSWORD}@database:3306/assiduo?serverVersion=8.4.12&charset=utf8mb4"
+      DATABASE_URL: "mysql://app:${DB_PASSWORD}@database:3306/assiduo?serverVersion=mariadb-11.4.13&charset=utf8mb4"
     depends_on:
       database:
         condition: service_healthy
     restart: unless-stopped
 
   database:
-    image: mysql:8.4.12
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_0900_ai_ci
+    image: mariadb:11.4.13
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_uca1400_ai_ci
     environment:
-      MYSQL_DATABASE: assiduo
-      MYSQL_USER: app
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: assiduo
+      MARIADB_USER: app
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "app", "-p${DB_PASSWORD}"]
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
       timeout: 5s
       retries: 10
       start_period: 30s

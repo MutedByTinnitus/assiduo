@@ -16,7 +16,7 @@ class Eleve
     private ?int $id = null;
 
     /**
-     * Identifiant d'élève de l'établissement — clé métier stable utilisée pour
+     * Identifiant d'élève de l'établissement : clé métier stable utilisée pour
      * rendre l'import CSV idempotent (voir annexe technique §4).
      */
     #[ORM\Column(length: 50)]

@@ -7,7 +7,7 @@ public et le code est publié sous licence MIT
 ## Pile technique
 - PHP 8.4 + [Symfony](https://symfony.com/) 7.4 (LTS) + [Twig](https://twig.symfony.com/)
 - [FrankenPHP](https://frankenphp.dev/) serveur d'application
-- MySQL 8.4 (LTS) via Doctrine ORM
+- MariaDB 11.4 (LTS) via Doctrine ORM
 - Docker Compose
 
 
